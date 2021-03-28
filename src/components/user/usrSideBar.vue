@@ -6,11 +6,11 @@
     <div class="top">
 
       <!-- Logo -->
-<!--      <div id="logo">-->
-<!--        <span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>-->
-<!--        <h1 id="title">Jane Doe</h1>-->
-<!--        <p>Hyperspace Engineer</p>-->
-<!--      </div>-->
+      <div id="logo">
+        <span class="image avatar48"><img src="/src/assets/images/logo.png" alt="" /></span>
+        <h1 id="title">{{account}}</h1>
+        <p>用户中心</p>
+      </div>
 
       <!-- Nav -->
       <div id="nav-1">
@@ -18,7 +18,7 @@
           <li><a href="#top" id="top-link"><span class="icon solid fa-home">用户统计</span></a></li>
           <li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">用户分布</span></a></li>
           <li><a href="#about" id="about-link"><span class="icon solid fa-user">用户走势</span></a></li>
-          <li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">用户</span></a></li>
+          <li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">联系我们</span></a></li>
         </ul>
       </div>
 
@@ -43,7 +43,25 @@
 
 <script>
 export default {
-name: "usrSidebar"
+name: "usrSidebar",
+  data(){
+  return {
+    account:'',
+  }
+  },
+  mounted() {
+    this.account=this.getAccount();
+  },
+  methods:{
+    getAccount(){
+      if(document.cookie !== '' && document.cookie !== null){
+        let c_name=unescape(document.cookie.split(";")[0].split("=")[1]);
+        return c_name;
+      }
+
+    }
+  }
+
 }
 </script>
 
@@ -181,6 +199,29 @@ ul.icons a {
   line-height: 2em;
   text-align: center;
   border: 0;
+}
+
+
+#header #logo{
+  /*background: #fff;*/
+  position: relative;
+  display: inline-block;
+  padding: 0 1.5em 0 1.5em;
+  top: -0.65em;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 19pt;
+  font-weight: 300;
+  line-height: 1.75em;
+}
+
+#header #logo h1 {
+  /*display: inline;*/
+
+}
+
+#header #logo p {
+  /*display: inline;*/
+  color: #C1CAC5;
 }
 
 

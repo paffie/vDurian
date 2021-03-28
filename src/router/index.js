@@ -14,8 +14,11 @@ import usrNav from "@/components/user/usrNav";
 
 Vue.use(Router);
 
+
+
 export default new Router({
     mode: 'history',
+
     routes: [
         {
             path: '/',
@@ -56,13 +59,64 @@ export default new Router({
             }
         },
         {
-            path:'/user',
-            name:'user',
-            components:{
-                navi:usrNav,
-                main:usrMain,
+            path: '/user/center',
+            name: 'u_center',
+            components: {
+                navi: usrNav,
+                main: usrMain,
             }
         },
+
+                {
+                    path: '/user/',
+                    name: 'u_root',
+                    components: {
+                        navi:usrNav,
+                        main:Introduction,
+                        foot:Foot,
+                    }
+                },
+                {
+                    path:'/user/search',
+                    name:'u_search',
+                    components: {
+                        navi:usrNav,
+                        main:Search,
+                        foot:Foot,
+                    },
+
+                    // children:[{
+                    //     path:'/:id?keyword=9',
+                    //     name:'answer',
+                    //     components:{
+                    //         main:Search,
+                    //         content:Answer,
+                    //     },
+                    // }
+                    // ]
+
+                },
+                {
+                    path:'/user/join_us',
+                    name:'u_join',
+                    components:{
+                        navi:usrNav,
+                        main:Join_us,
+                        foot:Foot,
+                    }
+                },
+                {
+                    path:'/user/timeline',
+                    name:'u_recommend',
+                    components:{
+                        navi:usrNav,
+                        main:Time_line,
+                        foot:Foot,
+                    }
+                },
+
+
+
         {
             path:'/register',
             name:'register',
@@ -89,6 +143,8 @@ export default new Router({
                 main:Time_line,
                 foot:Foot,
             }
-        }
+        },
+
+
     ]
 })
